@@ -72,3 +72,48 @@ departInput.addEventListener('change', () => {
     returnInput.value = '';
   }
 });
+
+// main.js
+document.addEventListener("DOMContentLoaded", () => {
+  const steps = document.querySelectorAll(".step");
+  const lines = document.querySelectorAll(".line");
+
+  const page = window.location.pathname;
+  let currentStep = 0;
+
+  if (page.includes("booking.html")) currentStep = 0;
+  else if (page.includes("flights.html")) currentStep = 1;
+  else if (page.includes("passenger.html")) currentStep = 2;
+  else if (page.includes("summary.html")) currentStep = 3;
+
+  // Highlight the steps
+  for (let i = 0; i <= currentStep; i++) {
+    steps[i].classList.add("active");
+    if (i > 0) lines[i - 1].classList.add("active");
+  }
+
+  // Add click event for step navigation
+  steps.forEach(step => {
+    step.addEventListener("click", () => {
+      const targetStep = step.getAttribute("data-step");
+
+      if (targetStep === "booking") window.location.href = "booking.html";
+      if (targetStep === "flights") window.location.href = "flights.html";
+      if (targetStep === "passenger") window.location.href = "passenger.html";
+      if (targetStep === "summary") window.location.href = "summary.html";
+    });
+  });
+});
+
+//NO ADVANCE STEP
+
+step.addEventListener("click", () => {
+  const stepIndex = Array.from(steps).indexOf(step);
+  if (stepIndex <= currentStep) {
+    const targetStep = step.getAttribute("data-step");
+    if (targetStep === "booking") window.location.href = "booking.html";
+    if (targetStep === "flights") window.location.href = "flights.html";
+    if (targetStep === "passenger") window.location.href = "passenger.html";
+    if (targetStep === "summary") window.location.href = "summary.html";
+  }
+});

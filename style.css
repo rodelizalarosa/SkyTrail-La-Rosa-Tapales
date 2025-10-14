@@ -195,16 +195,87 @@ nav h3 span {color: rgba(0,136,169,1);}
   transition: background 0.3s;
 }
 
-.search-btn:hover {
-  background: rgb(50, 80, 87);
+.search-btn:hover {background: rgb(50, 80, 87);}
+.icon {font-size: 10px; margin-right: 10px; color: #555;}
+.swap-btn i {font-size: 10px;}
+
+/* Stepper container fixed at the top */
+.stepper-container {
+  position: fixed;
+  top: 70px; /* adjust depending on your header height */
+  left: 0;
+  width: 100%;
+  background: #fff;
+  z-index: 1000;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  padding: 10px 0;
 }
 
-.icon {
-  font-size: 10px;
-  margin-right: 10px;
+.stepper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;       /* 👈 makes the step clickable */
+  user-select: none;
+}
+
+.step:hover .circle {
+  background: #007b8f;
+  color: #fff;
+  transition: 0.3s;
+}
+
+.step:hover .label {
+  color: #007b8f;
+  transition: 0.3s;
+}
+
+.circle {
+  width: 30px;
+  height: 30px;
+  background: #e0e0e0;
+  color: #333;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.label {
+  margin-top: 5px;
+  font-size: 0.9rem;
   color: #555;
 }
 
-.swap-btn i {
-  font-size: 10px;
+.line {
+  width: 60px;
+  height: 2px;
+  background: #e0e0e0;
+  transition: 0.3s;
+}
+
+/* Active Step */
+.step.active .circle {
+  background: #007b8f;  /* your accent color */
+  color: white;
+}
+
+.step.active .label {
+  font-weight: 600;
+  color: #007b8f;
+}
+
+.stepper .line.active {
+  background: #007b8f;
 }
