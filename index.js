@@ -1,6 +1,6 @@
 
 //PASSENGER SELECTOR
-const btn = document.getElementById('passengerBtn');
+const btn = document.getElementById('passengerBtn'); 
 const menu = document.getElementById('passengerMenu');
 const counts = {
   adult: 1,
@@ -55,3 +55,20 @@ document.addEventListener('click', (e) => {
   }
 });
 
+//DATE
+const today = new Date().toISOString().split('T')[0];
+
+const departInput = document.getElementById('depart-date');
+const returnInput = document.getElementById('return-date');
+
+departInput.min = today;
+returnInput.min = today;
+
+departInput.addEventListener('change', () => {
+  const selectedDepart = departInput.value;
+  returnInput.min = selectedDepart;
+
+  if (returnInput.value && returnInput.value < selectedDepart) {
+    returnInput.value = '';
+  }
+});
