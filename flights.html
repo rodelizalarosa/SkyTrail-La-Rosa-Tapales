@@ -1,42 +1,148 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SkyTrail</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SkyTrail | Flights</title>
 
-    <link href="images/plane.ico" rel="icon">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
-
-    <link rel="stylesheet" href="style.css">
+  <link href="images/plane.ico" rel="icon" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/stepper.css" />
+  <link rel="stylesheet" href="css/flights.css" />
 </head>
 <body>
+  <!-- ✅ Navigation -->
+  <div class="navigation">
+    <nav>
+      <h3>Sky<span>Trail.</span></h3>
+      <ul class="nav-links">
+        <li><a href="index.html">Back to Home</a></li>
+      </ul>
+    </nav>
+  </div>
 
-    <!-- Progress Stepper -->
-    <div class="stepper-container">
-    <div class="stepper">
-        <div class="step" data-step="booking">
-        <div class="circle">1</div>
-        <span class="label">Booking</span>
-        </div>
-        <div class="line"></div>
-        <div class="step" data-step="flights">
-        <div class="circle">2</div>
-        <span class="label">Flights</span>
-        </div>
-        <div class="line"></div>
-        <div class="step" data-step="passenger">
-        <div class="circle">3</div>
-        <span class="label">Passenger</span>
-        </div>
-        <div class="line"></div>
-        <div class="step" data-step="summary">
-        <div class="circle">4</div>
-        <span class="label">Summary</span>
-        </div>
+  <!-- ✅ Stepper -->
+  <div class="stepper-container">
+    <div class="step active">
+      <div class="circle">1</div>
+      <span>Booking</span>
     </div>
+    <div class="line"></div>
+    <div class="step active">
+      <div class="circle">2</div>
+      <span>Flights</span>
+    </div>
+    <div class="line"></div>
+    <div class="step">
+      <div class="circle">3</div>
+      <span>Passengers</span>
+    </div>
+    <div class="line"></div>
+    <div class="step">
+      <div class="circle">4</div>
+      <span>Summary</span>
+    </div>
+  </div>
+
+  <!-- ✅ Flights & Summary Container -->
+  <div class="flights-container">
+    <!-- ✈️ Flight Schedule List -->
+    <div class="flight-list">
+      <div class="flight-card">
+        <div class="flight-time">
+          <div class="depart">
+            <strong>11:55</strong>
+            <p>San Francisco (SFO)</p>
+            <span>Thu, July 12</span>
+          </div>
+          <div class="duration">
+            <span>1h 55m</span>
+            <i class="fa-solid fa-plane"></i>
+          </div>
+          <div class="arrive">
+            <strong>13:18</strong>
+            <p>Las Vegas (LAX)</p>
+            <span>Thu, July 12</span>
+          </div>
+        </div>
+        <div class="flight-info">
+          <span>DL 9630, DL 143, DL 1328</span>
+          <div class="price">
+            <strong>₱ 3,082</strong>
+            <button class="select-btn">Select</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="flight-card">
+        <div class="flight-time">
+          <div class="depart">
+            <strong>14:30</strong>
+            <p>San Francisco (SFO)</p>
+            <span>Thu, July 12</span>
+          </div>
+          <div class="duration">
+            <span>2h 10m</span>
+            <i class="fa-solid fa-plane"></i>
+          </div>
+          <div class="arrive">
+            <strong>16:40</strong>
+            <p>Las Vegas (LAX)</p>
+            <span>Thu, July 12</span>
+          </div>
+        </div>
+        <div class="flight-info">
+          <span>DL 1203, DL 457</span>
+          <div class="price">
+            <strong>₱ 4,132</strong>
+            <button class="select-btn">Select</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="flight-card">
+        <div class="flight-time">
+          <div class="depart">
+            <strong>18:15</strong>
+            <p>San Francisco (SFO)</p>
+            <span>Thu, July 12</span>
+          </div>
+          <div class="duration">
+            <span>1h 50m</span>
+            <i class="fa-solid fa-plane"></i>
+          </div>
+          <div class="arrive">
+            <strong>20:05</strong>
+            <p>Las Vegas (LAX)</p>
+            <span>Thu, July 12</span>
+          </div>
+        </div>
+        <div class="flight-info">
+          <span>DL 900, DL 230</span>
+          <div class="price">
+            <strong>₱ 3,500</strong>
+            <button class="select-btn">Select</button>
+          </div>
+        </div>
+      </div>
     </div>
 
-    
+    <!-- 🧾 Booking Summary -->
+    <div class="summary-panel">
+      <h2>Booking Summary</h2>
+      <hr>
+      <p><strong>From:</strong> Cebu</p>
+      <p><strong>To:</strong> Manila</p>
+      <p><strong>Departure:</strong> July 12, 2025</p>
+      <p><strong>Return:</strong> July 15, 2025</p>
+      <p><strong>Passengers:</strong> 1 Adult</p>
+      <p><strong>Cabin:</strong> Economy</p>
+      <hr>
+      <p><strong>Total:</strong> ₱ 0.00</p>
+    </div>
+  </div>
+
+  <script src="js/index.js"></script>
 </body>
 </html>

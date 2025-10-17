@@ -1,0 +1,149 @@
+/* ==================== STEPPER ==================== */
+.stepper-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+.stepper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+}
+
+.step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.circle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #e0e0e0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 600;
+  cursor: default;
+  transition: background 0.3s, color 0.3s;
+}
+
+.step.active .circle {
+  background: rgba(0, 136, 169, 1);
+  color: #fff;
+}
+
+.step.completed .circle {
+  background: rgb(50, 80, 87);
+  color: #fff;
+}
+
+.label {
+  margin-top: 8px;
+  font-size: 14px;
+  color: #888;
+}
+
+.step.active .label {
+  color: rgba(0, 136, 169, 1);
+  font-weight: 600;
+}
+
+.step.completed .label {
+  color: rgb(50, 80, 87);
+}
+
+.line {
+  width: 50px;
+  height: 2px;
+  background: #e0e0e0;
+}
+
+.line.completed {
+  background: rgb(50, 80, 87);
+}
+
+/* Booking Form in Stepper Pages */
+.booking-form-container {
+  background-color: #fff;
+  padding: 30px 25px;
+  border-radius: 10px;
+  width: 400px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+}
+
+.input-group label {
+  font-size: 14px;
+  margin-bottom: 5px;
+  font-weight: 600;
+}
+
+.input-group input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+.flight-type {
+  display: flex;
+  justify-content: space-between;
+}
+
+.form-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.back-btn,
+.next-btn {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.back-btn {
+  background-color: #ccc;
+  color: #333;
+}
+
+.next-btn {
+  background-color: rgb(50, 80, 87);
+  color: #fff;
+}
+
+.next-btn:hover {
+  background-color: rgb(36, 63, 69);
+}
+
+.back-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .stepper {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .circle {
+    width: 35px;
+    height: 35px;
+  }
+  .label {
+    font-size: 12px;
+  }
+}

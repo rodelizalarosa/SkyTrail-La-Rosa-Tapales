@@ -1,4 +1,3 @@
-
 //PASSENGER SELECTOR
 const btn = document.getElementById('passengerBtn'); 
 const menu = document.getElementById('passengerMenu');
@@ -117,3 +116,42 @@ step.addEventListener("click", () => {
     if (targetStep === "summary") window.location.href = "summary.html";
   }
 });
+
+
+// 🛫 Save booking data when user clicks Search
+document.querySelector(".search-btn").addEventListener("click", (e) => {
+  e.preventDefault();
+
+  const from = document.getElementById("from-input").value;
+  const to = document.getElementById("to-input").value;
+  const depart = document.getElementById("depart-date").value;
+  const ret = document.getElementById("return-date").value;
+  const cabin = document.getElementById("cabin").value;
+
+  // You can also store passenger count if you want
+  const passengers = document.getElementById("adultCount").innerText;
+
+  // Store all data in localStorage
+  const bookingData = { from, to, depart, ret, cabin, passengers };
+  localStorage.setItem("bookingData", JSON.stringify(bookingData));
+
+  // Redirect to booking.html or flights.html (your flow)
+  window.location.href = "booking.html";
+});
+
+// 🧭 Load saved data when user returns to index.html
+window.addEventListener("DOMContentLoaded", () => {
+  const savedData = localStorage.getItem("bookingData");
+  if (savedData) {
+    const data = JSON.parse(savedData);
+
+    if (data.from) document.getElementById("from-input").value = data.from;
+    if (data.to) document.getElementById("to-input").value = data.to;
+    if (data.depart) document.getElementById("depart-date").value = data.depart;
+    if (data.ret) document.getElementById("return-date").value = data.ret;
+    if (data.cabin) document.getElementById("cabin").value = data.cabin;
+    if (data.passengers) document.getElementById("adultCount").innerText = data.passengers;
+  }
+});
+
+
