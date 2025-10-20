@@ -263,40 +263,6 @@ nav h3 span {
   flex-wrap: wrap;
 }
 
-.input-box {
-  display: flex;
-  align-items: center;
-  background: #fff;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  padding: 10px 15px;
-  flex: 1;
-  min-width: 200px;
-}
-
-.input-box .icon {
-  font-size: 20px;
-  margin-right: 10px;
-}
-
-.input-wrapper {
-  display: flex;
-  flex-direction: column;
-}
-
-.input-wrapper label {
-  font-size: 12px;
-  color: #555;
-  margin-bottom: 2px;
-}
-
-.input-wrapper input {
-  border: none;
-  outline: none;
-  font-size: 15px;
-  color: #000;
-}
-
 .swap-btn {
   background: white;
   border: 1px solid #ccc;
@@ -330,3 +296,165 @@ nav h3 span {
 .search-btn:hover {
   background: rgb(50, 80, 87);
 }
+
+/* ================================
+   📦 INPUT CONTAINERS
+================================ */
+.input-group {
+  position: relative; /* Needed for absolute positioning of errors */
+  flex: 1;
+  min-width: 200px;
+  display: flex;
+  flex-direction: column;
+}
+
+.input-box {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding: 10px 15px;
+  flex: 1;
+  min-width: 200px;
+  gap: 8px;
+  position: relative;
+}
+
+.input-box .icon {
+  font-size: 20px;
+  margin-right: 10px;
+  color: rgba(0, 136, 169, 1);
+}
+
+.input-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.input-wrapper label {
+  font-size: 12px;
+  color: #555;
+  margin-bottom: 2px;
+}
+
+.input-wrapper input {
+  border: none;
+  outline: none;
+  font-size: 15px;
+  color: #000;
+}
+
+/* ================================
+   ⚠️ ERROR MESSAGES (Absolute position)
+================================ */
+
+.input-group .error-message {
+  position: absolute;
+  bottom: -18px; /* Places it below the input box */
+  left: 30px; /* aligns with text inside the input */
+  color: red;
+  font-size: 12px;
+  pointer-events: none; /* prevents blocking clicks */
+  white-space: nowrap;
+}
+
+
+/*AIRPORT DROPDOWN*/
+.dropdown-list {
+  position: absolute;
+  top: 100%;            
+  left: 0;
+  background: #fff;
+  border: 1px solid #ccc;
+  width: 100%;
+  max-height: 200px;
+  overflow-y: auto;
+  display: none;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  border-radius: 0 0 6px 6px; /* matches input box shape nicely */
+}
+
+.dropdown-item {
+  padding: 10px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  transition: background 0.2s ease;
+}
+
+.dropdown-item:hover {
+  background: #f0f0f0;
+}
+
+.airport-code {
+  display: inline-block;
+  background-color: rgba(0, 136, 169, 1);
+  color: #fff;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-weight: bold;
+  margin-right: 5px;
+}
+
+.airport-top {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.airport-bottom {
+  font-size: 12px;
+  color: #666;
+}
+
+.promo-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 999;
+}
+
+.promo-modal-content {
+  position: absolute;
+  top: 40%;
+  left: 40%;
+  background: #fff;
+  padding: 20px 25px;
+  border-radius: 10px;
+  text-align: center;
+  max-width: 300px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  animation: fadeIn 0.3s ease;
+}
+
+.promo-modal-content p {
+  margin-bottom: 15px;
+  font-size: 15px;
+}
+
+.promo-modal-content button {
+  background: #007bff;
+  color: white;
+  border: none;
+  padding: 8px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.promo-modal-content button:hover {
+  background: #0056b3;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+

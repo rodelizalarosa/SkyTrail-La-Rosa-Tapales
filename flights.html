@@ -50,158 +50,35 @@
         <h1>Flight Schedules</h1>
         <p>Step 2: Select your preferred flight from the available schedules below.</p>
       </div>
-      <hr class="header-divider" />
+        <hr class="header-divider" />
     </div>
-  <!-- ✅ Flights & Summary Container -->
-  <div class="flights-container">
-
-    <!-- ✈️ Flight Schedule List -->
+  
+    <div class="flights-container">
+  <!-- Left column: flight schedules -->
+  <div class="flights-column">
     <div class="flight-list">
-      <div class="flight-card">
-        <!-- Left: Flight Info -->
-        <div class="flight-info-left">
-          <div class="time-location">
-            <div class="departure">
-              <strong>11:55</strong>
-              <p>San Francisco (SFO)</p>
-              <span>Thu, July 12</span>
-            </div>
-
-            <div class="flight-route">
-              <span>1h 55m</span>
-              <div class="route-line">
-                <i class="fas fa-plane"></i>
-              </div>
-              <div class="airport-codes">
-                <span>SFO</span>
-                <span>LAX</span>
-              </div>
-            </div>
-
-            <div class="arrival">
-              <strong>13:18</strong>
-              <p>Las Vegas (LAX)</p>
-              <span>Thu, July 12</span>
-            </div>
-          </div>
-        </div>
-        <!-- Right: Flight Details -->
-        <div class="flight-info-right">
-          <div class="flight-number">
-            <span>DL 9630, DL 143, DL 1328</span>
-          </div>
-          <div class="seat-class">
-            <span>Seat: 12A, Economy</span>
-          </div>
-          <div class="price">
-            <strong>₱ 3,082</strong>
-            <button class="select-btn">Select</button>
-          </div>
-        </div>
-      </div>
-
-      <div class="flight-card">
-        <!-- Left: Flight Info -->
-        <div class="flight-info-left">
-          <div class="time-location">
-            <div class="departure">
-              <strong>14:30</strong>
-              <p>San Francisco (SFO)</p>
-              <span>Thu, July 12</span>
-            </div>
-
-            <div class="flight-route">
-              <span>2h 10m</span>
-              <div class="route-line">
-                <i class="fas fa-plane"></i>
-              </div>
-              <div class="airport-codes">
-                <span>SFO</span>
-                <span>LAX</span>
-              </div>
-            </div>
-
-            <div class="arrival">
-              <strong>16:40</strong>
-              <p>Las Vegas (LAX)</p>
-              <span>Thu, July 12</span>
-            </div>
-          </div>
-        </div>
-        <!-- Right: Flight Details -->
-        <div class="flight-info-right">
-          <div class="flight-number">
-            <span>DL 1203, DL 457</span>
-          </div>
-          <div class="seat-class">
-            <span>Seat: 14B, Economy</span>
-          </div>
-          <div class="price">
-            <strong>₱ 4,132</strong>
-            <button class="select-btn">Select</button>
-          </div>
-        </div>
-      </div>
-
-      <div class="flight-card">
-        <!-- Left: Flight Info -->
-        <div class="flight-info-left">
-          <div class="time-location">
-            <div class="departure">
-              <strong>18:15</strong>
-              <p>San Francisco (SFO)</p>
-              <span>Thu, July 12</span>
-            </div>
-
-            <div class="flight-route">
-              <span>1h 50m</span>
-              <div class="route-line">
-                <i class="fas fa-plane"></i>
-              </div>
-              <div class="airport-codes">
-                <span>SFO</span>
-                <span>LAX</span>
-              </div>
-            </div>
-
-            <div class="arrival">
-              <strong>20:05</strong>
-              <p>Las Vegas (LAX)</p>
-              <span>Thu, July 12</span>
-            </div>
-          </div>
-        </div>
-        <!-- Right: Flight Details -->
-        <div class="flight-info-right">
-          <div class="flight-number">
-            <span>DL 900, DL 230</span>
-          </div>
-          <div class="seat-class">
-            <span>Seat: 18C, Economy</span>
-          </div>
-          <div class="price">
-            <strong>₱ 3,500</strong>
-            <button class="select-btn">Select</button>
-          </div>
-        </div>
-      </div>
+      <!-- JS will populate flight cards here -->
     </div>
 
-    <!-- 🧾 Booking Summary -->
-    <div class="summary-panel">
-      <h2>Booking Summary</h2>
-      <hr>
-      <p><strong>From:</strong> Cebu</p>
-      <p><strong>To:</strong> Manila</p>
-      <p><strong>Departure:</strong> July 12, 2025</p>
-      <p><strong>Return:</strong> July 15, 2025</p>
-      <p><strong>Passengers:</strong> 1 Adult</p>
-      <p><strong>Cabin:</strong> Economy</p>
-      <hr>
-      <p><strong>Total:</strong> ₱ 0.00</p>
+    <!-- Navigation Buttons below flight list -->
+    <div class="step-nav">
+      <button class="step-btn back-btn" onclick="window.location.href='booking.html'">
+        <i class="fas fa-arrow-left"></i> Back
+      </button>
+      <button class="step-btn next-btn" id="next-step">
+        Next Step <i class="fas fa-arrow-right"></i>
+      </button>
     </div>
   </div>
 
+  <!-- Right column: booking summary -->
+  <div class="summary-panel">
+    <!-- JS will populate this dynamically -->
+  </div>
+</div>
+
+  <script src="js/promo.js"></script>
   <script src="js/index.js"></script>
+  <script src="js/flights.js"></script>
 </body>
 </html>

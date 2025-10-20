@@ -1,3 +1,6 @@
+/* =======================
+   GENERAL BOOKING STYLES
+   ======================= */
 .booking-header {
   max-width: 1080px;
   margin: 40px auto;
@@ -5,10 +8,6 @@
   padding: 30px;
   border-radius: 12px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-
-}
-
-.booking-header {
   margin-bottom: 1.5rem;
 }
 
@@ -34,9 +33,8 @@
 
 .flight-details {
   display: flex;
-  align-items: center;
-  gap: 10px;
   flex-wrap: wrap;
+  gap: 10px;
 }
 
 .input-box {
@@ -93,7 +91,7 @@
 }
 
 .search-btn {
-  background: rgba(0, 136, 169, 1);
+  background: #0088a9;
   color: white;
   border: none;
   padding: 12px 20px;
@@ -104,9 +102,12 @@
 }
 
 .search-btn:hover {
-  background: rgb(50, 80, 87);
+  background: #005f73;
 }
 
+/* =======================
+   FLIGHTS CONTAINER & SECTIONS
+   ======================= */
 .flights-container {
   display: grid;
   grid-template-columns: 2fr 1fr;
@@ -115,8 +116,27 @@
   margin: 30px auto;
 }
 
-.flight-card {
+/* Flight sections (Outbound / Return) */
+.flight-section {
   background: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+.flight-section h3 {
+  margin-bottom: 15px;
+  font-size: 1.3rem;
+  color: #1f2937;
+  font-weight: 600;
+}
+
+/* =======================
+   FLIGHT CARD
+   ======================= */
+.flight-card {
+  background: #fefefe;
   border-radius: 10px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
   padding: 20px;
@@ -131,6 +151,11 @@
 .flight-card:hover {
   transform: scale(1.02);
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+.flight-card.selected {
+  border: 2px solid #0088a9;
+  box-shadow: 0 6px 20px rgba(0, 136, 169, 0.3);
 }
 
 .flight-info-left {
@@ -262,68 +287,9 @@
   background: #005f73;
 }
 
-.flight-time {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.flight-time strong {
-  font-size: 1.5rem;
-}
-
-.flight-time p {
-  font-size: 0.9rem;
-  color: #444;
-}
-
-.flight-time span {
-  font-size: 0.8rem;
-  color: #777;
-}
-
-.duration {
-  text-align: center;
-}
-
-.duration span {
-  display: block;
-  font-size: 0.9rem;
-  margin-bottom: 5px;
-}
-
-.flight-info {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 0.9rem;
-}
-
-.price {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.price strong {
-  font-size: 1.2rem;
-  color: #0088a9;
-}
-
-.select-btn {
-  background: #0088a9;
-  color: white;
-  border: none;
-  padding: 8px 15px;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background 0.3s;
-}
-
-.select-btn:hover {
-  background: #005f73;
-}
-
+/* =======================
+   BOOKING SUMMARY PANEL
+   ======================= */
 .summary-panel {
   background: #fff;
   padding: 20px;
@@ -349,6 +315,83 @@
   background: #ddd;
 }
 
+/* =======================
+   RESPONSIVE
+   ======================= */
+@media (max-width: 900px) {
+  .flights-container {
+    grid-template-columns: 1fr;
+  }
+
+  .flight-card {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+
+  .time-location {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .flight-info-right {
+    align-items: flex-start;
+    width: 100%;
+  }
+
+  .price {
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .summary-panel {
+    width: 100%;
+    margin-top: 20px;
+  }
+}
+
+/* =======================
+   STEP NAVIGATION BUTTONS
+======================= */
+.step-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 25px;
+}
+
+.step-btn {
+  background: #0088a9;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: 500;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.step-btn:hover {
+  background: #005f73;
+  transform: translateY(-2px);
+}
+
+.back-btn {
+  background: #ccc;
+  color: #333;
+}
+
+.back-btn:hover {
+  background: #999;
+}
+
+/* =======================
+   RESPONSIVE
+======================= */
 @media (max-width: 900px) {
   .flights-container {
     grid-template-columns: 1fr;
@@ -356,6 +399,7 @@
 
   .summary-panel {
     margin-top: 20px;
+    width: 100%;
   }
 
   .flight-card {
@@ -387,3 +431,28 @@
     width: 100%;
   }
 }
+
+.promo-badge {
+  display: inline-block;
+  background: #ff4d4f;
+  color: #fff;
+  font-size: 0.75rem;
+  padding: 4px 8px;
+  border-radius: 12px;
+  margin-bottom: 5px;
+  font-weight: 500;
+}
+
+.price {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #0088a9;
+}
+
+.original-price {
+  text-decoration: line-through;
+  color: #888;
+  font-size: 0.9rem;
+  margin-left: 5px;
+}
+

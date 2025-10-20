@@ -3,6 +3,9 @@
   display: flex;
   justify-content: center;
   margin-top: 40px;
+  position: relative;
+  z-index: 4;
+  margin-bottom: 20px;
 }
 
 .stepper {

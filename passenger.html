@@ -1,55 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SkyTrail</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SkyTrail | Passenger</title>
 
-    <link href="images/plane.ico" rel="icon">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+  <link href="images/plane.ico" rel="icon" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="css/stepper.css" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/passenger.css" />
 
-    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <!-- ✅ Navigation -->
+  <div class="navigation">
+    <nav>
+      <h3>Sky<span>Trail.</span></h3>
+      <ul class="nav-links">
+        <li><a href="index.html">Back to Home</a></li>
+      </ul>
+    </nav>
+  </div>
 
-    <div class="navigation">
-        <nav>
-            <h3>Sky<span>Trail.</span></h3>
-        </nav>
+  <!-- ✅ Stepper -->
+  <div class="stepper-container">
+    <div class="step active">
+      <div class="circle">1</div>
+      <span>Booking</span>
+    </div>
+    <div class="line"></div>
+    <div class="step active">
+      <div class="circle">2</div>
+      <span>Flights</span>
+    </div>
+    <div class="line"></div>
+    <div class="step active">
+      <div class="circle">3</div>
+      <span>Passengers</span>
+    </div>
+    <div class="line"></div>
+    <div class="step">
+      <div class="circle">4</div>
+      <span>Summary</span>
+    </div>
+  </div>
+
+  <!-- ✅ Passenger Form -->
+  <div class="booking-section">
+    <div class="booking-header">
+      <div class="booking-title">
+        <h1>Passenger Details</h1>
+        <p>Step 3: Provide accurate passenger information for your booking.</p>
+      </div>
+      <hr class="header-divider">
+
+      <div id="passengerFormsContainer">
+        <!-- Dynamic forms will be generated here by JS -->
+      </div>
+
+      <!-- Navigation Buttons -->
+      <div class="step-nav">
+        <button type="button" class="step-btn back-btn" onclick="window.location.href='flights.html'">
+          <i class="fas fa-arrow-left"></i> Back
+        </button>
+        <button type="button" id="nextBtn" class="step-btn next-btn">
+          Next Step <i class="fas fa-arrow-right"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+
+    <!-- Validation Modal -->
+    <div id="validationModal" class="validation-modal" style="display: none;">
+      <div class="validation-modal-content">
+        <p id="validationMessage"></p>
+        <button id="closeValidationModal">OK</button>
+      </div>
     </div>
 
-
-    <div class="stepper-container">
-        <div class="stepper">
-            <div class="step" data-step="booking">
-                <div class="circle"><a href="booking.html">1</a></div>
-                <span class="label">Booking</span>
-            </div>
-            <div class="line"></div>
-            <div class="step" data-step="flights">
-                <div class="circle"><a href="flights.html">2</a></div>
-                <span class="label">Flights</span>
-            </div>
-            <div class="line"></div>
-            <div class="step" data-step="passenger">
-                <div class="circle"><a href="passenger.html">3</a></div>
-                <span class="label">Passenger</span>
-            </div>
-            <div class="line"></div>
-            <div class="step" data-step="summary">
-                <div class="circle"><a href="summary.html">4</a></div>
-                <span class="label">Summary</span>
-            </div>
-        </div>
+    <!-- Phone Validation Modal -->
+    <div id="phoneValidationModal" class="validation-modal" style="display: none;">
+      <div class="validation-modal-content">
+        <p id="phoneValidationMessage">Phone number must be exactly 11 digits.</p>
+        <button id="closePhoneValidationModal">OK</button>
+      </div>
     </div>
 
-    <div class="step-buttons">
-        <button id="prevBtn" disabled>Back</button>
-        <button id="nextBtn">Next Step</button>
-    </div>
-
-
-    <script src="index.js"> </script>
+    <script src="js/passenger.js"> </script>
 
 </body>
 </html>

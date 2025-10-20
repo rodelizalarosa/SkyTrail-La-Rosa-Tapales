@@ -3,54 +3,81 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SkyTrail</title>
+    <title>SkyTrail | Summary</title>
 
     <link href="images/plane.ico" rel="icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
-
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/stepper.css">
+    <link rel="stylesheet" href="css/summary.css">
 </head>
 <body>
 
     <div class="navigation">
         <nav>
             <h3>Sky<span>Trail.</span></h3>
+            <ul class="nav-links">
+                <li><a href="index.html">Back to Home</a></li>
+            </ul>
         </nav>
     </div>
 
     <div class="stepper-container">
-        <div class="stepper">
-            <div class="step" data-step="booking">
-                <div class="circle"><a href="booking.html">1</a></div>
-                <span class="label">Booking</span>
-            </div>
-            <div class="line"></div>
-            <div class="step" data-step="flights">
-                <div class="circle"><a href="flights.html">2</a></div>
-                <span class="label">Flights</span>
-            </div>
-            <div class="line"></div>
-            <div class="step" data-step="passenger">
-                <div class="circle"><a href="passenger.html">3</a></div>
-                <span class="label">Passenger</span>
-            </div>
-            <div class="line"></div>
-            <div class="step" data-step="summary">
-                <div class="circle"><a href="summary.html">4</a></div>
-                <span class="label">Summary</span>
-            </div>
+        <div class="step active">
+            <div class="circle">1</div>
+            <span>Booking</span>
+        </div>
+        <div class="line"></div>
+        <div class="step active">
+            <div class="circle">2</div>
+            <span>Flights</span>
+        </div>
+        <div class="line"></div>
+        <div class="step active">
+            <div class="circle">3</div>
+            <span>Passengers</span>
+        </div>
+        <div class="line"></div>
+        <div class="step active">
+            <div class="circle">4</div>
+            <span>Summary</span>
         </div>
     </div>
 
+    <div class="booking-section">
+        <div class="booking-header">
+            <div class="booking-title">
+                <h1>Booking Summary</h1>
+                <p>Step 4: Review your booking details and confirm.</p>
+            </div>
+            <hr class="header-divider">
+        </div>
 
+        <div class="summary-content">
+            <div id="flightDetails" class="summary-section"></div>
+            <div id="passengerDetails" class="summary-section"></div>
+            <div id="bookingSummary" class="summary-section"></div>
+        </div>
 
-    <div class="step-buttons">
-        <button id="prevBtn" disabled>Back</button>
-        <button id="nextBtn">Next Step</button>
+        <div class="step-nav">
+            <button type="button" class="step-btn back-btn" onclick="window.location.href='passenger.html'">
+                <i class="fas fa-arrow-left"></i> Back
+            </button>
+            <button type="button" id="confirmBtn" class="step-btn next-btn">
+                Confirm Booking <i class="fas fa-check"></i>
+            </button>
+        </div>
     </div>
 
+    <!-- Confirmation Modal -->
+    <div id="confirmationModal" class="confirmation-modal" style="display: none;">
+        <div class="confirmation-modal-content">
+            <p id="confirmationMessage"></p>
+            <button id="closeConfirmationModal">OK</button>
+        </div>
+    </div>
 
-    <script src="index.js"> </script>
+    <script src="js/summary.js"></script>
 
 </body>
 </html>

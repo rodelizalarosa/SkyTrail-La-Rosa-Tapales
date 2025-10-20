@@ -1,157 +1,275 @@
-//PASSENGER SELECTOR
+// ==========================
+// 🧍 PASSENGER SELECTOR (with auto-correct + localStorage)
+// ==========================
 const btn = document.getElementById('passengerBtn'); 
 const menu = document.getElementById('passengerMenu');
-const counts = {
-  adult: 1,
-  child: 0,
-  infant: 0
-};
+const counts = { adult: 1, child: 0, infant: 0 };
 
-btn.addEventListener('click', () => {
-  menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
-});
-
-document.querySelectorAll('.plus').forEach(button => {
-  button.addEventListener('click', () => {
-    const type = button.getAttribute('data-type');
-    counts[type]++;
-    document.getElementById(`${type}Count`).textContent = counts[type];
+if (btn && menu) {
+  // 🧭 Load saved passenger data from localStorage (if any)
+  const savedPassengers = localStorage.getItem('passengerCounts');
+  if (savedPassengers) {
+    const data = JSON.parse(savedPassengers);
+    counts.adult = data.adult || 1; // adult must not be 0
+    counts.child = data.child || 0;
+    counts.infant = data.infant || 0;
+    updateAllPassengerDisplay();
     updateButtonText();
-  });
-});
+  }
 
-document.querySelectorAll('.minus').forEach(button => {
-  button.addEventListener('click', () => {
-    const type = button.getAttribute('data-type');
-    if (counts[type] > 0) counts[type]--;
+  // 🟢 Toggle dropdown
+  btn.addEventListener('click', () => {
+    menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+  });
+
+  // ➕ PLUS BUTTON
+  document.querySelectorAll('.plus').forEach(button => {
+    button.addEventListener('click', () => {
+      const type = button.getAttribute('data-type');
+      counts[type]++;
+      updatePassengerDisplay(type);
+      updateButtonText();
+      savePassengerData();
+    });
+  });
+
+  // ➖ MINUS BUTTON (with adult auto-correct)
+  document.querySelectorAll('.minus').forEach(button => {
+    button.addEventListener('click', () => {
+      const type = button.getAttribute('data-type');
+
+      if (type === 'adult') {
+        if (counts.adult > 1) counts.adult--;
+      } else {
+        if (counts[type] > 0) counts[type]--;
+      }
+
+      updatePassengerDisplay(type);
+      updateButtonText();
+      savePassengerData();
+    });
+  });
+
+  // 🛑 Close dropdown when clicking outside
+  document.addEventListener('click', (e) => {
+    if (!btn.contains(e.target) && !menu.contains(e.target)) {
+      menu.style.display = 'none';
+    }
+  });
+
+  // 📝 Update passenger count display
+  function updatePassengerDisplay(type) {
     document.getElementById(`${type}Count`).textContent = counts[type];
-    updateButtonText();
-  });
-});
+  }
 
-function updateButtonText() {
-  const total = counts.adult + counts.child + counts.infant;
-  btn.textContent = `${total} Passenger${total > 1 ? 's' : ''}`;
+  // ✍️ Update all passenger display (used on load)
+  function updateAllPassengerDisplay() {
+    document.getElementById('adultCount').textContent = counts.adult;
+    document.getElementById('childCount').textContent = counts.child;
+    document.getElementById('infantCount').textContent = counts.infant;
+  }
+
+  // 📊 Update button text
+  function updateButtonText() {
+    const total = counts.adult + counts.child + counts.infant;
+    btn.textContent = `${total} Passenger${total > 1 ? 's' : ''}`;
+  }
+
+  // 💾 Save passenger data to localStorage
+  function savePassengerData() {
+    localStorage.setItem('passengerCounts', JSON.stringify(counts));
+  }
 }
 
-//TRIP TYPE HANDLER
+// ==========================
+// ✈️ TRIP TYPE HANDLER
+// ==========================
 const tripRadios = document.querySelectorAll('input[name="trip"]');
 const returnWrapper = document.getElementById('return-wrapper');
 
-tripRadios.forEach(radio => {
-  radio.addEventListener('change', () => {
-    if (radio.value === 'oneway') {
-      returnWrapper.style.display = 'none';
-    } else {
-      returnWrapper.style.display = 'flex';
-    }
+if (tripRadios && returnWrapper) {
+  tripRadios.forEach(radio => {
+    radio.addEventListener('change', () => {
+      if (radio.value === 'oneway') {
+        returnWrapper.style.display = 'none';
+        document.getElementById('return-date').value = '';
+      } else {
+        returnWrapper.style.display = 'flex';
+      }
+
+      // 📝 Save trip type to localStorage
+      const bookingData = JSON.parse(localStorage.getItem("bookingData")) || {};
+      bookingData.tripType = radio.value;
+      localStorage.setItem("bookingData", JSON.stringify(bookingData));
+    });
   });
-});
+}
 
-document.addEventListener('click', (e) => {
-  if (!btn.contains(e.target) && !menu.contains(e.target)) {
-    menu.style.display = 'none';
-  }
-});
-
-//DATE
+// ==========================
+// 📅 DATE HANDLER
+// ==========================
 const today = new Date().toISOString().split('T')[0];
-
 const departInput = document.getElementById('depart-date');
 const returnInput = document.getElementById('return-date');
 
-departInput.min = today;
-returnInput.min = today;
+if (departInput && returnInput) {
+  departInput.min = today;
+  returnInput.min = today;
 
-departInput.addEventListener('change', () => {
-  const selectedDepart = departInput.value;
-  returnInput.min = selectedDepart;
+  departInput.addEventListener('change', () => {
+    const selectedDepart = departInput.value;
+    returnInput.min = selectedDepart;
 
-  if (returnInput.value && returnInput.value < selectedDepart) {
-    returnInput.value = '';
+    if (returnInput.value && returnInput.value < selectedDepart) {
+      returnInput.value = '';
+    }
+  });
+}
+
+// ==========================
+// ✅ VALIDATION FUNCTION
+// ==========================
+function validateForm() {
+  let isValid = true;
+
+  const from = document.getElementById("from-input");
+  const to = document.getElementById("to-input");
+  const depart = document.getElementById("depart-date");
+  const ret = document.getElementById("return-date");
+
+  const tripTypeRaw = document.querySelector('input[name="trip"]:checked')?.value;
+  const tripType = (tripTypeRaw === 'round' || tripTypeRaw === 'roundtrip') ? 'round' : 'oneway';
+
+  // Clear old error messages
+  document.querySelectorAll(".error-message").forEach(msg => msg.textContent = "");
+
+  // -------------------
+  // FROM / TO VALIDATION
+  // -------------------
+  if (!from.value.trim()) {
+    showError(from, "Please select a departure airport.");
+    isValid = false;
   }
-});
 
-// main.js
-document.addEventListener("DOMContentLoaded", () => {
-  const steps = document.querySelectorAll(".step");
-  const lines = document.querySelectorAll(".line");
-
-  const page = window.location.pathname;
-  let currentStep = 0;
-
-  if (page.includes("booking.html")) currentStep = 0;
-  else if (page.includes("flights.html")) currentStep = 1;
-  else if (page.includes("passenger.html")) currentStep = 2;
-  else if (page.includes("summary.html")) currentStep = 3;
-
-  // Highlight the steps
-  for (let i = 0; i <= currentStep; i++) {
-    steps[i].classList.add("active");
-    if (i > 0) lines[i - 1].classList.add("active");
+  if (!to.value.trim()) {
+    showError(to, "Please select a destination airport.");
+    isValid = false;
   }
 
-  // Add click event for step navigation
-  steps.forEach(step => {
-    step.addEventListener("click", () => {
-      const targetStep = step.getAttribute("data-step");
+  // Check if user picked the same airport
+  if (selectedFrom && selectedTo && selectedFrom === selectedTo) {
+    showError(to, "Destination cannot be the same as departure.");
+    isValid = false;
+  }
 
-      if (targetStep === "booking") window.location.href = "booking.html";
-      if (targetStep === "flights") window.location.href = "flights.html";
-      if (targetStep === "passenger") window.location.href = "passenger.html";
-      if (targetStep === "summary") window.location.href = "summary.html";
+  // -------------------
+  // DEPART DATE
+  // -------------------
+  if (!depart.value) {
+    showError(depart, "Please choose or enter a valid date.");
+    isValid = false;
+  }
+
+  // -------------------
+  // RETURN DATE
+  // -------------------
+  const returnWrapper = document.getElementById('return-wrapper');
+  const returnVisible = returnWrapper ? (returnWrapper.style.display !== 'none') : true;
+
+  if (tripType === 'round' && returnVisible) {
+    if (!ret.value) {
+      showError(ret, "Please select a return date.");
+      isValid = false;
+    } else if (depart.value && ret.value <= depart.value) {
+      showError(ret, "Return date must be after depart date.");
+      isValid = false;
+    }
+  }
+
+  return isValid;
+}
+
+
+// ---------- SHOW ERROR ----------
+function showError(input, message) {
+  const group = input.closest(".input-group");
+  if (!group) return;
+
+  let error = group.querySelector(".error-message");
+  if (!error) {
+    error = document.createElement("small");
+    error.classList.add("error-message");
+    group.appendChild(error);
+  }
+
+  error.textContent = message;
+
+  // Remove error on input/change
+  const clear = () => { error.textContent = ""; };
+  input.addEventListener("input", clear, { once: true });
+  input.addEventListener("change", clear, { once: true });
+}
+
+// ---------- ATTACH BUTTONS ----------
+function attachSearchButtons() {
+  document.querySelectorAll(".search-btn, .cont-btn").forEach(btn => {
+    btn.addEventListener("click", (e) => {
+      e.preventDefault();
+      if (validateForm()) {
+        saveBookingDataAndGoNext();
+      }
     });
   });
-});
+}
 
-//NO ADVANCE STEP
+document.addEventListener('DOMContentLoaded', attachSearchButtons);
 
-step.addEventListener("click", () => {
-  const stepIndex = Array.from(steps).indexOf(step);
-  if (stepIndex <= currentStep) {
-    const targetStep = step.getAttribute("data-step");
-    if (targetStep === "booking") window.location.href = "booking.html";
-    if (targetStep === "flights") window.location.href = "flights.html";
-    if (targetStep === "passenger") window.location.href = "passenger.html";
-    if (targetStep === "summary") window.location.href = "summary.html";
-  }
-});
+// Promo code validation is handled in js/promo.js
 
-
-// 🛫 Save booking data when user clicks Search
-document.querySelector(".search-btn").addEventListener("click", (e) => {
-  e.preventDefault();
+// ==========================
+// 💾 SAVE BOOKING DATA (Index & Booking Page)
+// ==========================
+function saveBookingDataAndGoNext() {
+  // ✅ validate promo before proceeding
+  if (!validatePromoBeforeNext()) return; 
 
   const from = document.getElementById("from-input").value;
   const to = document.getElementById("to-input").value;
   const depart = document.getElementById("depart-date").value;
   const ret = document.getElementById("return-date").value;
   const cabin = document.getElementById("cabin").value;
+  const passengers = {
+    adult: parseInt(document.getElementById("adultCount").innerText) || 1,
+    child: parseInt(document.getElementById("childCount").innerText) || 0,
+    infant: parseInt(document.getElementById("infantCount").innerText) || 0
+  };
+  const tripType = document.querySelector('input[name="trip"]:checked')?.value || 'oneway';
 
-  // You can also store passenger count if you want
-  const passengers = document.getElementById("adultCount").innerText;
-
-  // Store all data in localStorage
-  const bookingData = { from, to, depart, ret, cabin, passengers };
+  const bookingData = { from, to, depart, ret, cabin, passengers, tripType };
   localStorage.setItem("bookingData", JSON.stringify(bookingData));
 
-  // Redirect to booking.html or flights.html (your flow)
-  window.location.href = "booking.html";
-});
+  window.location.href = "flights.html";
+}
 
-// 🧭 Load saved data when user returns to index.html
-window.addEventListener("DOMContentLoaded", () => {
-  const savedData = localStorage.getItem("bookingData");
-  if (savedData) {
-    const data = JSON.parse(savedData);
+// Attach to index page button
+const searchBtn = document.querySelector(".search-btn");
+if (searchBtn) {
+  searchBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    if (validateForm()) {
+      saveBookingDataAndGoNext();
+    }
+  });
+}
 
-    if (data.from) document.getElementById("from-input").value = data.from;
-    if (data.to) document.getElementById("to-input").value = data.to;
-    if (data.depart) document.getElementById("depart-date").value = data.depart;
-    if (data.ret) document.getElementById("return-date").value = data.ret;
-    if (data.cabin) document.getElementById("cabin").value = data.cabin;
-    if (data.passengers) document.getElementById("adultCount").innerText = data.passengers;
-  }
-});
+// Attach to booking page button
+const contBtn = document.querySelector(".cont-btn");
+if (contBtn) {
+  contBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    if (validateForm()) {
+      saveBookingDataAndGoNext();
+    }
+  });
 
-
+}
