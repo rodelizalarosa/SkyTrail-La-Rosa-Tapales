@@ -2,6 +2,22 @@
 // 🛫 RANDOM UTILITIES
 // ==========================
 
+// Airport map for display
+const airportMap = {
+  "MNL": "Manila",
+  "CEB": "Cebu",
+  "DVO": "Davao",
+  "MPH": "Caticlan (Boracay)",
+  "TAG": "Tagbilaran (Bohol)",
+  "ILO": "Iloilo"
+};
+
+// Extract code from full string like "Manila (MNL)"
+function getCode(full) {
+  const match = full.match(/\(([^)]+)\)/);
+  return match ? match[1] : full;
+}
+
 // Generate random seat assignments
 function getRandomSeats(numPassengers) {
   const seats = [];
@@ -24,8 +40,22 @@ function generateFlightNo() {
 // Calculate arrival time
 function getArrivalTime(depart, duration) {
   const [depHour, depMin] = depart.split(":").map(Number);
-  const durHrs = parseInt(duration.split("h")[0]);
-  const durMins = parseInt(duration.split(" ")[1].replace("m", ""));
+
+  let durHrs = 0;
+  let durMins = 0;
+
+  if (duration.includes("h") && duration.includes(" ")) {
+    // "1h 25m"
+    durHrs = parseInt(duration.split("h")[0]);
+    durMins = parseInt(duration.split(" ")[1].replace("m", ""));
+  } else if (duration.includes("h")) {
+    // "1h"
+    durHrs = parseInt(duration.split("h")[0]);
+  } else if (duration.includes("m")) {
+    // "45m"
+    durMins = parseInt(duration.replace("m", ""));
+  }
+
   let totalMin = depMin + durMins;
   let hour = depHour + durHrs + Math.floor(totalMin / 60);
   let min = totalMin % 60;
@@ -51,7 +81,49 @@ function formatDate(dateStr) {
 function generateFlights(from, to, date, cabin, totalPassengers, numFlights = 3) {
   const flights = [];
   const times = ["06:00", "08:30", "11:45", "14:20", "17:10", "19:50"];
-  const durations = ["1h 50m", "2h 05m", "1h 55m"];
+  const flightDurations = {
+    //From Manila (MNL)
+    'MNL-CEB': '1h 25m',
+    'MNL-DVO': '2h 10m',
+    'MNL-MPH': '1h',
+    'MNL-TAG': '1h 25m',
+    'MNL-ILO': '1h',
+
+    //From Cebu (CEB)
+    'CEB-MNL': '1h 25m',
+    'CEB-DVO': '1h',
+    'CEB-MPH': '45m',
+    'CEB-TAG': '30m',
+    'CEB-ILO': '35m',
+
+    //From Davao (DVO)
+    'DVO-MNL': '2h 10m',
+    'DVO-CEB': '1h',
+    'DVO-MPH': '1h 20m',
+    'DVO-TAG': '1h 15m',
+    'DVO-ILO': '1h 20m',
+
+    //From Caticlan/Boracay (MPH)
+    'MPH-MNL': '1h',
+    'MPH-CEB': '45m',
+    'MPH-DVO': '1h 15m',
+    'MPH-TAG': '50m',
+    'MPH-ILO': '30m',
+
+    //From Tagbilaran/Bohol (TAG)
+    'TAG-MNL': '1h 25m',
+    'TAG-CEB': '25m',
+    'TAG-DVO': '1h 15m',
+    'TAG-MPH': '50m',
+    'TAG-ILO': '45m',
+
+    //From Iloilo (ILO)
+    'ILO-MNL': '1h',
+    'ILO-CEB': '35m',
+    'ILO-DVO': '1h 20m',
+    'ILO-MPH': '30m',
+    'ILO-TAG': '45m'
+  };
   const basePrice = { Economy: 3000, Business: 5000, First: 8000, "First Class": 8000 };
   const usedTimes = [];
 
@@ -61,7 +133,7 @@ function generateFlights(from, to, date, cabin, totalPassengers, numFlights = 3)
     while (usedTimes.includes(departTime));
     usedTimes.push(departTime);
 
-    const duration = durations[Math.floor(Math.random() * durations.length)];
+    const duration = flightDurations[`${from}-${to}`] || "1h 30m";
     const price = basePrice[cabin] + Math.floor(Math.random() * 500);
 
     flights.push({
@@ -95,8 +167,8 @@ let selectedFlights = { depart: null, return: null };
 
 function populateFlights() {
   const data = JSON.parse(localStorage.getItem("bookingData")) || {};
-  const from = data.from || "MNL";
-  const to = data.to || "CEB";
+  const from = getCode(data.from) || "MNL";
+  const to = getCode(data.to) || "CEB";
   const depart = data.depart || "2025-10-20";
   const ret = data.ret || "";
   const cabin = data.cabin || "Economy";
@@ -195,7 +267,7 @@ function createFlightCard(flight, type, passengers, index) {
       <div class="time-location">
         <div class="departure">
           <strong>${flight.depart}</strong>
-          <p>${flight.from}</p>
+          <p>${airportMap[flight.from] || flight.from}</p>
           <span>${formatDate(flight.date)}</span>
         </div>
         <div class="flight-route">
@@ -204,7 +276,7 @@ function createFlightCard(flight, type, passengers, index) {
         </div>
         <div class="arrival">
           <strong>${flight.arrival}</strong>
-          <p>${flight.to}</p>
+          <p>${airportMap[flight.to] || flight.to}</p>
           <span>${formatDate(flight.date)}</span>
         </div>
       </div>
@@ -305,8 +377,8 @@ function populateBookingSummary(data) {
   summary.innerHTML = `
     <h2>Booking Summary</h2>
     <hr>
-    <p><strong>From:</strong> ${data.from || "-"}</p>
-    <p><strong>To:</strong> ${data.to || "-"}</p>
+    <p><strong>From:</strong> ${airportMap[getCode(data.from)] || data.from || "-"}</p>
+    <p><strong>To:</strong> ${airportMap[getCode(data.to)] || data.to || "-"}</p>
     <p><strong>Departure:</strong> ${formatDate(data.depart)}</p>
     <p><strong>Return:</strong> ${data.ret ? formatDate(data.ret) : "-"}</p>
     <p><strong>Passengers:</strong> ${totalPassengers} Passenger${totalPassengers > 1 ? "s" : ""}</p>

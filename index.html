@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SkyTrail</title>
@@ -9,168 +9,167 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
 
     <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
-
+  </head>
+  <body>
     <div class="navigation">
-        <nav>
-            <h3>Sky<span>Trail.</span></h3>
-            <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-            <a class="book" href="booking.html" target="_blank"><button id="book-now">Book now</button></a> 
-        </nav>
+      <nav>
+        <h3>Sky<span>Trail.</span></h3>
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+        <a class="book" href="booking.html" target="_blank"><button id="book-now">Book now</button></a>
+      </nav>
     </div>
 
     <div class="hero" id="home">
-        <div class="hero-content">
-            <p>READY TO TAKE OFF</p>
-            <h1>Explore the world, <span>Fly with ease.</span> </h1>
-        </div>
+      <div class="hero-content">
+        <p>READY TO TAKE OFF</p>
+        <h1>Explore the world, <span>Fly with ease.</span> </h1>
+      </div>
 
-        <div class="hero-image">
-            <img src="images/airplane-bg.png" alt="Airplane">
-        </div>
+      <div class="hero-image">
+        <img src="images/airplane-bg.png" alt="Airplane">
+      </div>
     </div>
 
     <div class="booking-section">
-        <div class="top-options">
-            <!-- Trip type -->
-            <div class="trip-type">
-                <label><input type="radio" name="trip" value="round" checked> Round-trip</label>
-                <label><input type="radio" name="trip" value="oneway"> One-way </label>
-            </div>
-
-            <!-- Vertical line -->
-            <div class="divider"></div>
-
-            <div class="passenger-dropdown">
-            <button class="dropdown-btn" id="passengerBtn">1 Passenger</button>
-
-            <div class="dropdown-menu" id="passengerMenu">
-                <div class="passenger-row">
-                <div>
-                    <strong>Adult</strong><br>
-                    <small>Above 12 years</small>
-                </div>
-                <div class="counter">
-                    <button class="minus" data-type="adult">−</button>
-                    <span class="count" id="adultCount">1</span>
-                    <button class="plus" data-type="adult">+</button>
-                </div>
-                </div>
-
-                <div class="passenger-row">
-                <div>
-                    <strong>Child</strong><br>
-                    <small>2 – 11 years on travel date</small>
-                </div>
-                <div class="counter">
-                    <button class="minus" data-type="child">−</button>
-                    <span class="count" id="childCount">0</span>
-                    <button class="plus" data-type="child">+</button>
-                </div>
-                </div>
-
-                <div class="passenger-row">
-                <div>
-                    <strong>Infant</strong><br>
-                    <small>Below 2 years on travel date</small>
-                </div>
-                <div class="counter">
-                    <button class="minus" data-type="infant">−</button>
-                    <span class="count" id="infantCount">0</span>
-                    <button class="plus" data-type="infant">+</button>
-                </div>
-                </div>
-            </div>
-            </div>
-
-            <div class="divider"></div>
-
-            <div class="cabin">
-                <select name="cabin" id="cabin">
-                    <option>Economy</option>
-                    <option>Business</option>
-                    <option>First Class</option>
-                </select>
-            </div>
-
-            <div class="divider"></div>
-
-            <div class="promo-code">
-                <input type="text" placeholder="Promo code">
-            </div>
-
-            <div id="promoModal" class="promo-modal" style="display: none;">
-                <div class="promo-modal-content">
-                    <p id="promoMessage"></p>
-                    <button id="closePromoModal">OK</button>
-                </div>
-            </div>
+      <div class="top-options">
+        <!-- Trip type -->
+        <div class="trip-type">
+          <label><input type="radio" name="trip" value="round" checked> Round-trip</label>
+          <label><input type="radio" name="trip" value="oneway"> One-way </label>
         </div>
 
-        <div class="flight-details">
-            <div class="input-group">
-                <div class="input-box">
-                    <i class="fa-solid fa-plane-departure icon"></i>
-                    <div class="input-wrapper">
-                        <label>Departure</label>
-                        <input type="text" id="from-input" placeholder="From">
-                        <div class="dropdown-list" id="from-dropdown"></div>
-                    </div>
-                </div>
-                    <small class="error-message" id="from-error"></small>
+        <!-- Vertical line -->
+        <div class="divider"></div>
+
+        <div class="passenger-dropdown">
+          <button class="dropdown-btn" id="passengerBtn">1 Passenger</button>
+
+          <div class="dropdown-menu" id="passengerMenu">
+            <div class="passenger-row">
+              <div>
+                <strong>Adult</strong><br>
+                <small>Above 12 years</small>
+              </div>
+              <div class="counter">
+                <button class="minus" data-type="adult">−</button>
+                <span class="count" id="adultCount">1</span>
+                <button class="plus" data-type="adult">+</button>
+              </div>
             </div>
 
-            <div class="swap-btn" id="swap-btn" title="Swap locations">
-                <i class="fa-solid fa-right-left"></i>
-            </div>
-            
-            <div class="input-group">
-                <div class="input-box">
-                    <i class="fa-solid fa-plane-arrival icon"></i>
-                    <div class="input-wrapper">
-                        <label>Destination</label>
-                        <input type="text" id="to-input" placeholder="To">
-                        <div class="dropdown-list" id="to-dropdown"></div>
-                    </div>
-                </div>
-                    <small class="error-message" id="to-error"></small>
-            </div>
-               
-            <div class="input-group">
-                <div class="input-box">
-                    <i class="fa-solid fa-calendar-days icon"></i>
-                    <div class="input-wrapper">
-                        <label>Departure date</label>
-                        <input type="date" id="depart-date">
-                    </div>
-                </div>
-                    <small class="error-message" id="depart-error"></small>
+            <div class="passenger-row">
+              <div>
+                <strong>Child</strong><br>
+                <small>2 – 11 years on travel date</small>
+              </div>
+              <div class="counter">
+                <button class="minus" data-type="child">−</button>
+                <span class="count" id="childCount">0</span>
+                <button class="plus" data-type="child">+</button>
+              </div>
             </div>
 
-            <div class="input-group">
-                <div class="input-box" id="return-wrapper">
-                    <i class="fa-solid fa-calendar-check icon"></i>
-                    <div class="input-wrapper">
-                        <label>Return date</label>
-                        <input type="date" id="return-date">
-                    </div>
-                </div>
-                    <small class="error-message" id="return-error"></small>
+            <div class="passenger-row">
+              <div>
+                <strong>Infant</strong><br>
+                <small>Below 2 years on travel date</small>
+              </div>
+              <div class="counter">
+                <button class="minus" data-type="infant">−</button>
+                <span class="count" id="infantCount">0</span>
+                <button class="plus" data-type="infant">+</button>
+              </div>
             </div>
+          </div>
         </div>
 
-        <div class="search-container">
-            <a href="flights.html"><button class="search-btn"><i class="fa-solid fa-magnifying-glass"></i> Search Flights</button></a>
+        <div class="divider"></div>
+
+        <div class="cabin">
+          <select name="cabin" id="cabin">
+            <option>Economy</option>
+            <option>Business</option>
+            <option>First Class</option>
+          </select>
         </div>
+
+        <div class="divider"></div>
+
+        <div class="promo-code">
+          <input type="text" placeholder="Promo code">
+        </div>
+
+        <div id="promoModal" class="promo-modal" style="display: none;">
+          <div class="promo-modal-content">
+            <p id="promoMessage"></p>
+            <button id="closePromoModal">OK</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="flight-details">
+        <div class="input-group">
+          <div class="input-box">
+            <i class="fa-solid fa-plane-departure icon"></i>
+            <div class="input-wrapper">
+              <label>Departure</label>
+              <input type="text" id="from-input" placeholder="From">
+              <div class="dropdown-list" id="from-dropdown"></div>
+            </div>
+          </div>
+          <small class="error-message" id="from-error"></small>
+        </div>
+
+        <div class="swap-btn" id="swap-btn" title="Swap locations">
+          <i class="fa-solid fa-right-left"></i>
+        </div>
+
+        <div class="input-group">
+          <div class="input-box">
+            <i class="fa-solid fa-plane-arrival icon"></i>
+            <div class="input-wrapper">
+              <label>Destination</label>
+              <input type="text" id="to-input" placeholder="To">
+              <div class="dropdown-list" id="to-dropdown"></div>
+            </div>
+          </div>
+          <small class="error-message" id="to-error"></small>
+        </div>
+
+        <div class="input-group">
+          <div class="input-box">
+            <i class="fa-solid fa-calendar-days icon"></i>
+            <div class="input-wrapper">
+              <label>Departure date</label>
+              <input type="date" id="depart-date">
+            </div>
+          </div>
+          <small class="error-message" id="depart-error"></small>
+        </div>
+
+        <div class="input-group">
+          <div class="input-box" id="return-wrapper">
+            <i class="fa-solid fa-calendar-check icon"></i>
+            <div class="input-wrapper">
+              <label>Return date</label>
+              <input type="date" id="return-date">
+            </div>
+          </div>
+          <small class="error-message" id="return-error"></small>
+        </div>
+      </div>
+
+      <div class="search-container">
+        <a href="flights.html"><button class="search-btn"><i class="fa-solid fa-magnifying-glass"></i> Search Flights</button></a>
+      </div>
     </div>
 
     <script src="js/promo.js"></script>
-    <script src="js/index.js"> </script>
-    <script src="js/booking.js"> </script>
-</body>
+    <script src="js/index.js"></script>
+    <script src="js/booking.js"></script>
+  </body>
 </html>

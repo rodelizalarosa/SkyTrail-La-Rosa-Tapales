@@ -1,202 +1,201 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SkyTrail | Booking</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SkyTrail | Booking</title>
 
-  <link href="images/plane.ico" rel="icon" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
-  <link rel="stylesheet" href="css/style.css" />
-  <link rel="stylesheet" href="css/booking.css" />
-  <link rel="stylesheet" href="css/stepper.css" />
-</head>
-<body>
+    <link href="images/plane.ico" rel="icon" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/booking.css" />
+    <link rel="stylesheet" href="css/stepper.css" />
+  </head>
+  <body>
+    <!-- ✅ Navigation -->
+    <div class="navigation">
+      <nav>
+        <h3>Sky<span>Trail.</span></h3>
+        <ul class="nav-links">
+          <li><a href="index.html">Back to Home</a></li>
+        </ul>
+      </nav>
+    </div>
 
-  <!-- ✅ Navigation -->
-  <div class="navigation">
-    <nav>
-      <h3>Sky<span>Trail.</span></h3>
-      <ul class="nav-links">
-        <li><a href="index.html">Back to Home</a></li>
-      </ul>
-    </nav>
-  </div>
-
-  <!-- ✅ Progress Stepper -->
-  <div class="stepper-container">
-    <div class="step active">
-      <div class="circle">1</div>
-      <span>Booking</span>
-    </div>
-    <div class="line"></div>
-    <div class="step">
-      <div class="circle">2</div>
-      <span>Flights</span>
-    </div>
-    <div class="line"></div>
-    <div class="step">
-      <div class="circle">3</div>
-      <span>Passengers</span>
-    </div>
-    <div class="line"></div>
-    <div class="step">
-      <div class="circle">4</div>
-      <span>Summary</span>
-    </div>
-  </div>
-
-  <div class="booking-section">
-    <!-- Step title & description -->
-    <div class="booking-header">
-      <div class="booking-title">
-        <h1>Book a Flight</h1>
-        <p>Step 1: Fill in your travel details to begin your booking process.</p>
+    <!-- ✅ Progress Stepper -->
+    <div class="stepper-container">
+      <div class="step active">
+        <div class="circle">1</div>
+        <span>Booking</span>
       </div>
-      <hr class="header-divider">
+      <div class="line"></div>
+      <div class="step">
+        <div class="circle">2</div>
+        <span>Flights</span>
+      </div>
+      <div class="line"></div>
+      <div class="step">
+        <div class="circle">3</div>
+        <span>Passengers</span>
+      </div>
+      <div class="line"></div>
+      <div class="step">
+        <div class="circle">4</div>
+        <span>Summary</span>
+      </div>
     </div>
 
-    <div class="top-options">
-      <!-- Trip type -->
-      <div class="trip-type">
-        <label><input type="radio" name="trip" value="roundtrip" checked> Round-trip</label>
-        <label><input type="radio" name="trip" value="oneway"> One-way</label>
+    <div class="booking-section">
+      <!-- Step title & description -->
+      <div class="booking-header">
+        <div class="booking-title">
+          <h1>Book a Flight</h1>
+          <p>Step 1: Fill in your travel details to begin your booking process.</p>
+        </div>
+        <hr class="header-divider">
       </div>
 
-      <div class="divider"></div>
+      <div class="top-options">
+        <!-- Trip type -->
+        <div class="trip-type">
+          <label><input type="radio" name="trip" value="roundtrip" checked> Round-trip</label>
+          <label><input type="radio" name="trip" value="oneway"> One-way</label>
+        </div>
 
-      <!-- Passenger dropdown -->
-      <div class="passenger-dropdown">
-        <button class="dropdown-btn" id="passengerBtn">1 Passenger</button>
-        <div class="dropdown-menu" id="passengerMenu">
-          <div class="passenger-row">
-            <div>
-              <strong>Adult</strong><br>
-              <small>Above 12 years</small>
-            </div>
-            <div class="counter">
-              <button class="minus" data-type="adult">−</button>
-              <span class="count" id="adultCount">1</span>
-              <button class="plus" data-type="adult">+</button>
-            </div>
-          </div>
+        <div class="divider"></div>
 
-          <div class="passenger-row">
-            <div>
-              <strong>Child</strong><br>
-              <small>2 – 11 years</small>
+        <!-- Passenger dropdown -->
+        <div class="passenger-dropdown">
+          <button class="dropdown-btn" id="passengerBtn">1 Passenger</button>
+          <div class="dropdown-menu" id="passengerMenu">
+            <div class="passenger-row">
+              <div>
+                <strong>Adult</strong><br>
+                <small>Above 12 years</small>
+              </div>
+              <div class="counter">
+                <button class="minus" data-type="adult">−</button>
+                <span class="count" id="adultCount">1</span>
+                <button class="plus" data-type="adult">+</button>
+              </div>
             </div>
-            <div class="counter">
-              <button class="minus" data-type="child">−</button>
-              <span class="count" id="childCount">0</span>
-              <button class="plus" data-type="child">+</button>
-            </div>
-          </div>
 
-          <div class="passenger-row">
-            <div>
-              <strong>Infant</strong><br>
-              <small>Below 2 years</small>
+            <div class="passenger-row">
+              <div>
+                <strong>Child</strong><br>
+                <small>2 – 11 years</small>
+              </div>
+              <div class="counter">
+                <button class="minus" data-type="child">−</button>
+                <span class="count" id="childCount">0</span>
+                <button class="plus" data-type="child">+</button>
+              </div>
             </div>
-            <div class="counter">
-              <button class="minus" data-type="infant">−</button>
-              <span class="count" id="infantCount">0</span>
-              <button class="plus" data-type="infant">+</button>
+
+            <div class="passenger-row">
+              <div>
+                <strong>Infant</strong><br>
+                <small>Below 2 years</small>
+              </div>
+              <div class="counter">
+                <button class="minus" data-type="infant">−</button>
+                <span class="count" id="infantCount">0</span>
+                <button class="plus" data-type="infant">+</button>
+              </div>
             </div>
           </div>
         </div>
-      </div>
 
-      <div class="divider"></div>
+        <div class="divider"></div>
 
-      <!-- Cabin -->
-      <div class="cabin">
-        <select name="cabin" id="cabin">
-          <option>Economy</option>
-          <option>Business</option>
-          <option>First Class</option>
-        </select>
-      </div>
+        <!-- Cabin -->
+        <div class="cabin">
+          <select name="cabin" id="cabin">
+            <option>Economy</option>
+            <option>Business</option>
+            <option>First Class</option>
+          </select>
+        </div>
 
-      <div class="divider"></div>
+        <div class="divider"></div>
 
-      <!-- Promo code -->
-      <div class="promo-code">
-        <input type="text" placeholder="Promo code">
-      </div>
+        <!-- Promo code -->
+        <div class="promo-code">
+          <input type="text" placeholder="Promo code">
+        </div>
 
-       <div id="promoModal" class="promo-modal" style="display: none;">
+        <div id="promoModal" class="promo-modal" style="display: none;">
           <div class="promo-modal-content">
             <p id="promoMessage"></p>
             <button id="closePromoModal">OK</button>
           </div>
         </div>
+      </div>
+
+      <!-- ✅ Flight details -->
+      <div class="flight-details">
+        <!-- Departure -->
+        <div class="input-group">
+          <div class="input-box">
+            <i class="fa-solid fa-plane-departure icon"></i>
+            <div class="input-wrapper">
+              <label>Departure</label>
+              <input type="text" id="from-input" placeholder="From">
+              <div class="dropdown-list" id="from-dropdown"></div>
+            </div>
+          </div>
+          <small class="error-message" id="from-error"></small>
+        </div>
+
+        <!-- Destination -->
+        <div class="input-group">
+          <div class="input-box">
+            <i class="fa-solid fa-plane-arrival icon"></i>
+            <div class="input-wrapper">
+              <label>Destination</label>
+              <input type="text" id="to-input" placeholder="To">
+              <div class="dropdown-list" id="to-dropdown"></div>
+            </div>
+          </div>
+          <small class="error-message" id="to-error"></small>
+        </div>
+
+        <!-- Departure Date -->
+        <div class="input-group">
+          <div class="input-box">
+            <i class="fa-solid fa-calendar-days icon"></i>
+            <div class="input-wrapper">
+              <label>Departure date</label>
+              <input type="date" id="depart-date">
+            </div>
+          </div>
+          <small class="error-message" id="depart-error"></small>
+        </div>
+
+        <!-- Return Date -->
+        <div class="input-group" id="return-wrapper">
+          <div class="input-box">
+            <i class="fa-solid fa-calendar-check icon"></i>
+            <div class="input-wrapper">
+              <label>Return date</label>
+              <input type="date" id="return-date">
+            </div>
+          </div>
+          <small class="error-message" id="return-error"></small>
+        </div>
+      </div>
+
+      <div class="continue-container">
+        <button class="cont-btn" id="contBtn">Continue</button>
+      </div>
     </div>
 
-    <!-- ✅ Flight details -->
-    <div class="flight-details">
-      <!-- Departure -->
-      <div class="input-group">
-        <div class="input-box">
-          <i class="fa-solid fa-plane-departure icon"></i>
-          <div class="input-wrapper">
-            <label>Departure</label>
-            <input type="text" id="from-input" placeholder="From">
-            <div class="dropdown-list" id="from-dropdown"></div>
-          </div>
-        </div>
-        <small class="error-message" id="from-error"></small>
-      </div>
+    <script>
+      const currentStep = 0; // Booking step
+    </script>
 
-      <!-- Destination -->
-      <div class="input-group">
-        <div class="input-box">
-          <i class="fa-solid fa-plane-arrival icon"></i>
-          <div class="input-wrapper">
-            <label>Destination</label>
-            <input type="text" id="to-input" placeholder="To">
-            <div class="dropdown-list" id="to-dropdown"></div>
-          </div>
-        </div>
-        <small class="error-message" id="to-error"></small>
-      </div>
-
-      <!-- Departure Date -->
-      <div class="input-group">
-        <div class="input-box">
-          <i class="fa-solid fa-calendar-days icon"></i>
-          <div class="input-wrapper">
-            <label>Departure date</label>
-            <input type="date" id="depart-date">
-          </div>
-        </div>
-        <small class="error-message" id="depart-error"></small>
-      </div>
-
-      <!-- Return Date -->
-      <div class="input-group" id="return-wrapper">
-        <div class="input-box" >
-          <i class="fa-solid fa-calendar-check icon"></i>
-          <div class="input-wrapper">
-            <label>Return date</label>
-            <input type="date" id="return-date">
-          </div>
-        </div>
-        <small class="error-message" id="return-error"></small>
-      </div>
-    </div>
-
-    <div class="continue-container">
-      <button class="cont-btn" id="contBtn">Continue</button>
-    </div>
-  </div>
-
-  <script>
-    const currentStep = 0; // Booking step
-  </script>
-
-  <script src="js/promo.js"></script>
-  <script src="js/index.js"> </script>
-  <script src="js/booking.js"> </script>
-</body>
+    <script src="js/promo.js"></script>
+    <script src="js/index.js"></script>
+    <script src="js/booking.js"></script>
+  </body>
 </html>

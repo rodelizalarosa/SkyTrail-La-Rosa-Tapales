@@ -1,175 +1,23 @@
-/* =======================
-   SUMMARY PAGE STYLES
-   ======================= */
-
-.booking-header {
-  width: 100%;
-  max-width: 1080px;
-  margin: 40px auto;
-  background: white;
-  padding: 30px;
-  border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-  margin-bottom: 1.5rem;
-  position: relative;
-  z-index: 5;
-}
-
-.booking-title h1 {
-  font-size: 2rem;
-  font-weight: 600;
-  color: #1f2937;
-  margin-bottom: 0.3rem;
-}
-
-.booking-title p {
-  font-size: 1rem;
-  color: #6b7280;
-  margin-bottom: 1rem;
-}
-
-.header-divider {
-  border: none;
-  height: 1px;
-  background-color: #d1d5db;
-  margin: 0;
-}
-
-.summary-content {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-  margin-bottom: 2rem;
-}
-
-.summary-section {
-  background: #fff;
-  padding: 1.5rem;
-  border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-}
-
-.summary-section h3 {
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
-  color: #1f2937;
-  border-bottom: 2px solid #0088a9;
-  padding-bottom: 0.5rem;
-}
-
-.summary-section h4 {
-  font-size: 1.25rem;
-  margin-bottom: 0.5rem;
-  color: #374151;
-}
-
-.flight-summary, .passenger-summary {
-  margin-bottom: 1.5rem;
-  padding: 1rem;
-  background: #f9fafb;
-  border-radius: 6px;
-  border-left: 4px solid #0088a9;
-}
-
-.flight-summary p, .passenger-summary p {
-  margin: 0.5rem 0;
-  font-size: 0.95rem;
-  color: #4b5563;
-}
-
-.flight-summary p strong, .passenger-summary p strong {
-  color: #1f2937;
-}
-
-/* Confirmation Modal */
-.confirmation-modal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: rgba(0, 0, 0, 0.6);
-  z-index: 9999;
-}
-
-.confirmation-modal-content {
-  background: #fff;
-  padding: 20px 25px;
-  border-radius: 10px;
-  text-align: center;
-  max-width: 400px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-  animation: fadeIn 0.3s ease;
-}
-
-.confirmation-modal-content p {
-  margin-bottom: 15px;
-  font-size: 16px;
-  color: #1f2937;
-}
-
-.confirmation-modal-content button {
-  background: #0088a9;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 1rem;
-  font-weight: 500;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  transition: background 0.3s ease, transform 0.2s ease;
-  margin: 0 auto;
-}
-
-.confirmation-modal-content button:hover {
-  background: #005f73;
-  transform: translateY(-2px);
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: scale(0.95); }
-  to { opacity: 1; transform: scale(1); }
-}
-
-/* === STEP NAVIGATION BUTTONS === */
-.step-nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 25px;
-}
-
-.step-btn {
-  background: #0088a9;
-  color: #fff;
-  border: none;
-  padding: 10px 20px;
-  font-size: 1rem;
-  font-weight: 500;
-  border-radius: 6px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  transition: background 0.3s ease, transform 0.2s ease;
-}
-
-.step-btn:hover {
-  background: #005f73;
-  transform: translateY(-2px);
-}
-
-.back-btn {
-  background: #ccc;
-  color: #333;
-}
-
-.back-btn:hover {
-  background: #999;
-}
+.booking-section {width: 100%; max-width: 1200px; display: flex; flex-direction: column; position: relative; z-index: 3; background: transparent;}
+.booking-header {width: 100%; max-width: 1200px; margin: 80px auto 40px; background: white; padding: 30px; border-radius: 12px; position: relative; z-index: 5;}
+.booking-title h1 {font-size: 2rem; font-weight: 600; color: #1f2937; margin-bottom: 0.3rem;}
+.booking-title p {font-size: 1rem; color: #6b7280; margin-bottom: 1rem;}
+.header-divider {border: none; height: 1px; background-color: #d1d5db; margin: 0;}
+.summary-content {display: flex; flex-direction: column; gap: 2rem; margin-bottom: 2rem;}
+.summary-section {background: #fff; padding: 1.5rem; border-radius: 8px; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);}
+.summary-section h3 {font-size: 1.5rem; margin-bottom: 1rem; color: #1f2937; border-bottom: 2px solid #0088a9; padding-bottom: 0.5rem;}
+.summary-section h4 {font-size: 1.25rem; margin-bottom: 0.5rem; color: #374151;}
+.flight-summary, .passenger-summary {margin-bottom: 1.5rem; padding: 1rem; background: #eceff2; border-radius: 6px; border-left: 4px solid #0088a9;}
+.flight-summary p, .passenger-summary p {margin: 0.5rem 0; font-size: 0.95rem; color: #5a636f;}
+.flight-summary p strong, .passenger-summary p strong {color: #1f2937;}
+.confirmation-modal {position: fixed; top: 0; left: 0; width: 100%; height: 100%; display: flex; justify-content: center; align-items: center; background: rgba(0, 0, 0, 0.6); z-index: 9999;}
+.confirmation-modal-content {background: #fff; padding: 20px 25px; border-radius: 10px; text-align: center; max-width: 400px; box-shadow: 0 4px 10px rgba(0,0,0,0.3); animation: fadeIn 0.3s ease;}
+.confirmation-modal-content p {margin-bottom: 15px; font-size: 16px; color: #1f2937;}
+.confirmation-modal-content button {background: #0088a9; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; font-size: 1rem; font-weight: 500; display: flex; align-items: center; gap: 8px; transition: background 0.3s ease, transform 0.2s ease; margin: 0 auto;}
+.confirmation-modal-content button:hover {background: #005f73; transform: translateY(-2px);}
+@keyframes fadeIn {from {opacity: 0; transform: scale(0.95);} to {opacity: 1; transform: scale(1);}}
+.step-nav {display: flex; justify-content: space-between; align-items: center; margin-top: 25px;}
+.step-btn {background: #0088a9; color: #fff; border: none; padding: 10px 20px; font-size: 1rem; font-weight: 500; border-radius: 6px; cursor: pointer; display: flex; align-items: center; gap: 8px; transition: background 0.3s ease, transform 0.2s ease;}
+.step-btn:hover {background: #005f73; transform: translateY(-2px);}
+.back-btn {background: #ccc; color: #333;}
+.back-btn:hover {background: #999;}

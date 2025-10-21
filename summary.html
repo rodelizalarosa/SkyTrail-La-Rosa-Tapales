@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SkyTrail | Summary</title>
@@ -10,74 +10,72 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/stepper.css">
     <link rel="stylesheet" href="css/summary.css">
-</head>
-<body>
-
+  </head>
+  <body>
     <div class="navigation">
-        <nav>
-            <h3>Sky<span>Trail.</span></h3>
-            <ul class="nav-links">
-                <li><a href="index.html">Back to Home</a></li>
-            </ul>
-        </nav>
+      <nav>
+        <h3>Sky<span>Trail.</span></h3>
+        <ul class="nav-links">
+          <li><a href="index.html">Back to Home</a></li>
+        </ul>
+      </nav>
     </div>
 
     <div class="stepper-container">
-        <div class="step active">
-            <div class="circle">1</div>
-            <span>Booking</span>
-        </div>
-        <div class="line"></div>
-        <div class="step active">
-            <div class="circle">2</div>
-            <span>Flights</span>
-        </div>
-        <div class="line"></div>
-        <div class="step active">
-            <div class="circle">3</div>
-            <span>Passengers</span>
-        </div>
-        <div class="line"></div>
-        <div class="step active">
-            <div class="circle">4</div>
-            <span>Summary</span>
-        </div>
+      <div class="step active">
+        <div class="circle">1</div>
+        <span>Booking</span>
+      </div>
+      <div class="line"></div>
+      <div class="step active">
+        <div class="circle">2</div>
+        <span>Flights</span>
+      </div>
+      <div class="line"></div>
+      <div class="step active">
+        <div class="circle">3</div>
+        <span>Passengers</span>
+      </div>
+      <div class="line"></div>
+      <div class="step active">
+        <div class="circle">4</div>
+        <span>Summary</span>
+      </div>
     </div>
 
     <div class="booking-section">
-        <div class="booking-header">
-            <div class="booking-title">
-                <h1>Booking Summary</h1>
-                <p>Step 4: Review your booking details and confirm.</p>
-            </div>
-            <hr class="header-divider">
+      <div class="booking-header">
+        <div class="booking-title">
+          <h1>Booking Summary</h1>
+          <p>Step 4: Review your booking details and confirm.</p>
         </div>
+        <hr class="header-divider">
+      </div>
 
-        <div class="summary-content">
-            <div id="flightDetails" class="summary-section"></div>
-            <div id="passengerDetails" class="summary-section"></div>
-            <div id="bookingSummary" class="summary-section"></div>
-        </div>
+      <div class="summary-content">
+        <div id="flightDetails" class="summary-section"></div>
+        <div id="passengerDetails" class="summary-section"></div>
+        <div id="bookingSummary" class="summary-section"></div>
+      </div>
 
-        <div class="step-nav">
-            <button type="button" class="step-btn back-btn" onclick="window.location.href='passenger.html'">
-                <i class="fas fa-arrow-left"></i> Back
-            </button>
-            <button type="button" id="confirmBtn" class="step-btn next-btn">
-                Confirm Booking <i class="fas fa-check"></i>
-            </button>
-        </div>
+      <div class="step-nav">
+        <button type="button" class="step-btn back-btn" onclick="window.location.href='passenger.html'">
+          <i class="fas fa-arrow-left"></i> Back
+        </button>
+        <button type="button" id="confirmBtn" class="step-btn next-btn">
+          Confirm Booking <i class="fas fa-check"></i>
+        </button>
+      </div>
     </div>
 
     <!-- Confirmation Modal -->
     <div id="confirmationModal" class="confirmation-modal" style="display: none;">
-        <div class="confirmation-modal-content">
-            <p id="confirmationMessage"></p>
-            <button id="closeConfirmationModal">OK</button>
-        </div>
+      <div class="confirmation-modal-content">
+        <p id="confirmationMessage"></p>
+        <button id="closeConfirmationModal">OK</button>
+      </div>
     </div>
 
     <script src="js/summary.js"></script>
-
-</body>
+  </body>
 </html>

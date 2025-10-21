@@ -1,4 +1,4 @@
-// ✅ Summary page logic
+// Summary page logic
 document.addEventListener("DOMContentLoaded", () => {
   const bookingData = JSON.parse(localStorage.getItem("bookingData")) || {};
   const passengerData = JSON.parse(localStorage.getItem("passengerData")) || [];

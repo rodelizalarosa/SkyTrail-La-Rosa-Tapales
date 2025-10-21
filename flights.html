@@ -1,84 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SkyTrail | Flights</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SkyTrail | Flights</title>
 
-  <link href="images/plane.ico" rel="icon" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
-  <link rel="stylesheet" href="css/style.css" />
-  <link rel="stylesheet" href="css/stepper.css" />
-  <link rel="stylesheet" href="css/flights.css" />
-</head>
-<body>
-  <!-- ✅ Navigation -->
-  <div class="navigation">
-    <nav>
-      <h3>Sky<span>Trail.</span></h3>
-      <ul class="nav-links">
-        <li><a href="index.html">Back to Home</a></li>
-      </ul>
-    </nav>
-  </div>
+    <link href="images/plane.ico" rel="icon" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/stepper.css" />
+    <link rel="stylesheet" href="css/flights.css" />
+  </head>
+  <body>
+    <!-- ✅ Navigation -->
+    <div class="navigation">
+      <nav>
+        <h3>Sky<span>Trail.</span></h3>
+        <ul class="nav-links">
+          <li><a href="index.html">Back to Home</a></li>
+        </ul>
+      </nav>
+    </div>
 
-  <!-- ✅ Stepper -->
-  <div class="stepper-container">
-    <div class="step active">
-      <div class="circle">1</div>
-      <span>Booking</span>
+    <!-- ✅ Stepper -->
+    <div class="stepper-container">
+      <div class="step active">
+        <div class="circle">1</div>
+        <span>Booking</span>
+      </div>
+      <div class="line"></div>
+      <div class="step active">
+        <div class="circle">2</div>
+        <span>Flights</span>
+      </div>
+      <div class="line"></div>
+      <div class="step">
+        <div class="circle">3</div>
+        <span>Passengers</span>
+      </div>
+      <div class="line"></div>
+      <div class="step">
+        <div class="circle">4</div>
+        <span>Summary</span>
+      </div>
     </div>
-    <div class="line"></div>
-    <div class="step active">
-      <div class="circle">2</div>
-      <span>Flights</span>
-    </div>
-    <div class="line"></div>
-    <div class="step">
-      <div class="circle">3</div>
-      <span>Passengers</span>
-    </div>
-    <div class="line"></div>
-    <div class="step">
-      <div class="circle">4</div>
-      <span>Summary</span>
-    </div>
-  </div>
 
-   <div class="booking-header">
+    <div class="booking-header">
       <div class="booking-title">
         <h1>Flight Schedules</h1>
         <p>Step 2: Select your preferred flight from the available schedules below.</p>
       </div>
-        <hr class="header-divider" />
+      <hr class="header-divider" />
     </div>
-  
+
     <div class="flights-container">
-  <!-- Left column: flight schedules -->
-  <div class="flights-column">
-    <div class="flight-list">
-      <!-- JS will populate flight cards here -->
+      <!-- Left column: flight schedules -->
+      <div class="flights-column">
+        <div class="flight-list">
+          <!-- JS will populate flight cards here -->
+        </div>
+
+        <!-- Navigation Buttons below flight list -->
+        <div class="step-nav">
+          <button class="step-btn back-btn" onclick="window.location.href='booking.html'">
+            <i class="fas fa-arrow-left"></i> Back
+          </button>
+          <button class="step-btn next-btn" id="next-step">
+            Next Step <i class="fas fa-arrow-right"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Right column: booking summary -->
+      <div class="summary-panel">
+        <!-- JS will populate this dynamically -->
+      </div>
     </div>
 
-    <!-- Navigation Buttons below flight list -->
-    <div class="step-nav">
-      <button class="step-btn back-btn" onclick="window.location.href='booking.html'">
-        <i class="fas fa-arrow-left"></i> Back
-      </button>
-      <button class="step-btn next-btn" id="next-step">
-        Next Step <i class="fas fa-arrow-right"></i>
-      </button>
-    </div>
-  </div>
-
-  <!-- Right column: booking summary -->
-  <div class="summary-panel">
-    <!-- JS will populate this dynamically -->
-  </div>
-</div>
-
-  <script src="js/promo.js"></script>
-  <script src="js/index.js"></script>
-  <script src="js/flights.js"></script>
-</body>
+    <script src="js/promo.js"></script>
+    <script src="js/index.js"></script>
+    <script src="js/flights.js"></script>
+  </body>
 </html>

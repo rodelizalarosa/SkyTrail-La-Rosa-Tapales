@@ -1,192 +1,26 @@
-/* =======================
-   GENERAL BOOKING STYLES
-   ======================= */
-.booking-section {
-  width: 100%;
-  max-width: 1080px;
-  margin: 40px auto 0;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  z-index: 3;
-}
-
-.booking-header {
-  width: 100%;
-  max-width: 1080px;
-  margin: 40px auto;
-  background: white;
-  padding: 30px;
-  border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-  margin-bottom: 1.5rem;
-  position: relative;
-  z-index: 5;
-}
-
-.booking-title h1 {
-  font-size: 2rem;
-  font-weight: 600;
-  color: #1f2937;
-  margin-bottom: 0.3rem;
-}
-
-.booking-title p {
-  font-size: 1rem;
-  color: #6b7280;
-  margin-bottom: 1rem;
-}
-
-.header-divider {
-  border: none;
-  height: 1px;
-  background-color: #d1d5db;
-  margin: 0;
-}
-
-/* === STEP NAVIGATION BUTTONS === */
-.step-nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 25px;
-}
-
-.step-btn {
-  background: #0088a9;
-  color: #fff;
-  border: none;
-  padding: 10px 20px;
-  font-size: 1rem;
-  font-weight: 500;
-  border-radius: 6px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  transition: background 0.3s ease, transform 0.2s ease;
-}
-
-.step-btn:hover {
-  background: #005f73;
-  transform: translateY(-2px);
-}
-
-.back-btn {
-  background: #ccc;
-  color: #333;
-}
-
-.back-btn:hover {
-  background: #999;
-}
-
-
-.form-section {
-  margin-top: 1.5rem;
-}
-
-.form-section h2 {
-  font-size: 1.25rem;
-  margin-bottom: 0.3rem;
-  color: #1f2937;
-}
-
-.form-section h3 {
-  margin-bottom: 0.3rem;
-  margin-top: 0.5rem;
-}
-
-.form-row {
-  display: flex;
-  gap: 20px;
-  flex-wrap: wrap;
-}
-
-.form-group {
-  flex: 1;
-  min-width: 250px;
-  display: flex;
-  flex-direction: column;
-  margin-top: 1rem;
-}
-
-.form-group label {
-  font-weight: 500;
-  margin-bottom: 10px;
-}
-
-.form-group input,
-.form-section select {
-  padding: 10px;
-  border: 1px solid #d1d5db;
-  border-radius: 6px;
-  font-size: 0.95rem;
-}
-
-.form-group input:focus,
-.form-section select:focus {
-  outline: none;
-  border-color: #0088a9;
-}
-
-.radio-group {
-  display: flex;
-  gap: 15px;
-  align-items: center;
-}
-
-#contactInfo {
-  transition: opacity 0.3s ease;
-}
-
-/* Validation Modal */
-.validation-modal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: rgba(0, 0, 0, 0.6);
-  z-index: 9999;
-}
-
-.validation-modal-content {
-  position: absolute;
-  top: 40%;
-  left: 40%;
-  background: #fff;
-  padding: 20px 25px;
-  border-radius: 10px;
-  text-align: center;
-  max-width: 300px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-  animation: fadeIn 0.3s ease;
-}
-
-.validation-modal-content p {
-  margin-bottom: 15px;
-  font-size: 15px;
-}
-
-.validation-modal-content button {
-  background: #007bff;
-  color: white;
-  border: none;
-  padding: 8px 20px;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.validation-modal-content button:hover {
-  background: #0056b3;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: scale(0.95); }
-  to { opacity: 1; transform: scale(1); }
-}
+.booking-section {width: 100%; max-width: 1200px; margin: 40px auto 0; padding: 20px; display: flex; flex-direction: column; position: relative; z-index: 3; background: transparent;}
+.booking-header {width: 100%; max-width: 1200px; margin: 20px auto 40px; background: white; padding: 30px; border-radius: 12px; position: relative; z-index: 5;}
+.booking-title h1 {font-size: 2rem; font-weight: 600; color: #1f2937; margin-bottom: 0.3rem;}
+.booking-title p {font-size: 1rem; color: #6b7280; margin-bottom: 1rem;}
+.header-divider {border: none; height: 1px; background-color: #d1d5db; margin: 0;}
+.step-nav {display: flex; justify-content: space-between; align-items: center; margin-top: 25px;}
+.step-btn {background: #0088a9; color: #fff; border: none; padding: 10px 20px; font-size: 1rem; font-weight: 500; border-radius: 6px; cursor: pointer; display: flex; align-items: center; gap: 8px; transition: background 0.3s ease, transform 0.2s ease;}
+.step-btn:hover {background: #005f73; transform: translateY(-2px);}
+.back-btn {background: #ccc; color: #333;}
+.back-btn:hover {background: #999;}
+.form-section {margin-top: 1.5rem;}
+.form-section h2 {font-size: 1.25rem; margin-bottom: 0.3rem; color: #1f2937;}
+.form-section h3 {margin-bottom: 0.3rem; margin-top: 0.5rem;}
+.form-row {display: flex; gap: 20px; flex-wrap: wrap;}
+.form-group {flex: 1; min-width: 250px; display: flex; flex-direction: column; margin-top: 1rem;}
+.form-group label {font-weight: 500; margin-bottom: 10px;}
+.form-group input, .form-section select {padding: 10px; border: 1px solid #d1d5db; border-radius: 6px; font-size: 0.95rem;}
+.form-group input:focus, .form-section select:focus {outline: none; border-color: #0088a9;}
+.radio-group {display: flex; gap: 15px; align-items: center;}
+#contactInfo {transition: opacity 0.3s ease;}
+.validation-modal {position: fixed; top: 0; left: 0; width: 100%; height: 100%; display: flex; justify-content: center; align-items: center; background: rgba(0, 0, 0, 0.6); z-index: 9999;}
+.validation-modal-content {position: absolute; top: 40%; left: 40%; background: #fff; padding: 20px 25px; border-radius: 10px; text-align: center; max-width: 300px; box-shadow: 0 4px 10px rgba(0,0,0,0.3); animation: fadeIn 0.3s ease;}
+.validation-modal-content p {margin-bottom: 15px; font-size: 15px;}
+.validation-modal-content button {background: #007bff; color: white; border: none; padding: 8px 20px; border-radius: 5px; cursor: pointer;}
+.validation-modal-content button:hover {background: #0056b3;}
+@keyframes fadeIn {from {opacity: 0; transform: scale(0.95);} to {opacity: 1; transform: scale(1);}}
